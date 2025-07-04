@@ -4,6 +4,7 @@ from collections import deque
 input = sys.stdin.readline
 
 
+# 한 덩어리의 크기를 구하는 함수
 def bfs(x, y):
     queue = deque([(x, y)])
     # 방문 처리
@@ -26,8 +27,7 @@ def bfs(x, y):
                 # 최소 하나로
     return areas
 
-
-# N, M, K 입력
+# N, M, K = 판의 크기, 전체 포자 개수, 한 번에 자랄 수 있는 버섯 개수
 N, M, K = map(int, input().split())
 
 # 나무판 상태 입력
@@ -63,3 +63,54 @@ elif total_nums <= M:
     print(M - total_nums)
 else:
     print('IMPOSSIBLE')
+
+
+#| 항목    | BFS (너비 우선)     | DFS (깊이 우선)          |
+#| ----- | --------------- | -------------------- |
+#| 탐색 방식 | 가까운 칸부터 → 퍼지듯이  | 한 방향으로 쭉 → 끝까지       |
+#| 사용 구조 | `queue` (deque) | **`stack` or 재귀함수**  |
+#| 순서    | 층별로 확장          | 길게 파고들기              |
+#| 대표 구조 | `while queue:`  | `def dfs():` + 재귀 호출 |
+
+
+# import sys
+# import math
+# sys.setrecursionlimit(1000000)  # 재귀 깊이 제한 해제
+
+# input = sys.stdin.readline
+
+# N, M, K = map(int, input().split())
+# boards = [list(map(int, input().split())) for _ in range(N)]
+
+# # 상하좌우 방향
+# directions = [(-1, 0), (1, 0), (0, -1), (0, 1)]
+
+# def dfs(x, y):
+#     # 방문 처리
+#     boards[x][y] = 1
+#     size = 1
+
+#     for dx, dy in directions:
+#         nx, ny = x + dx, y + dy
+#         if 0 <= nx < N and 0 <= ny < N and boards[nx][ny] == 0:
+#             size += dfs(nx, ny)  # 연결된 곳 계속 탐색
+#     return size
+
+# total_spores = 0
+# use_seed = False
+
+# for i in range(N):
+#     for j in range(N):
+#         if boards[i][j] == 0:
+#             area = dfs(i, j)
+#             spores_needed = math.ceil(area / K)
+#             total_spores += spores_needed
+#             use_seed = True
+
+# if not use_seed:
+#     print("IMPOSSIBLE")
+# elif total_spores <= M:
+#     print("POSSIBLE")
+#     print(M - total_spores)
+# else:
+#     print("IMPOSSIBLE")
