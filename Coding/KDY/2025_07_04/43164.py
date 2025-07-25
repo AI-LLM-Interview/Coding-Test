@@ -9,7 +9,7 @@ def solution(tickets):
         end=t[1]
         graph[start].append(end)
         graph[start].sort()
-    print(graph)
+    # print(graph)
     
     # 경로 정답
     answer = []
@@ -18,7 +18,6 @@ def solution(tickets):
         while graph[now]:
             dfs(graph[now].pop(0))
         answer.append(now)
-    
 
     dfs("ICN")
 
