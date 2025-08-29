@@ -14,7 +14,7 @@ def solution(tickets):
     
     # 2. DFS 탐색 시작
     while stack:
-        # 스택에서 현재 상태를 꺼냄 (LIFO - Last In First Out)
+        # 스택에서 현재 상태를 꺼냄
         current_pos, path, used_tickets = stack.pop()
         
         # 3. 종료 조건 체크
